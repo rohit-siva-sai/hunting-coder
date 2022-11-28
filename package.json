@@ -1,0 +1,26 @@
+{
+  "name": "rohit",
+  "version": "0.1.0",
+  "private": false,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next build ",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "next": "^12.2.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-router-dom": "^6.3.0",
+    "vercel": "^28.5.6",
+    "yarn": "^1.22.19"
+  },
+  "devDependencies": {
+    "eslint": "8.23.0",
+    "eslint-config-next": "12.2.5"
+  }
+}

@@ -1,0 +1,22 @@
+.container
+{
+    max-width: 45vw;
+    margin: auto;
+}
+.para{
+    text-align: justify;
+}
+.center{
+    text-align: center;
+}
+@media only screen and (max-width: 600px)
+{
+    l.container{
+     
+      font-size: medium;
+      font-weight: bold;
+      max-width: 90px;
+      margin-left: 5px;
+       color: red;  
+    }
+}
