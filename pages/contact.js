@@ -1,67 +1,50 @@
 import React from "react";
 import styles from "../styles/contact.module.css";
-import  {useState}   from "react";
-
+import { useState } from "react";
 
 const Contact = (props) => {
- 
-    const [name, setname] = useState('');
-    const [email, setemail] = useState('');
-    const [phone, setphone] = useState('');
-    const [desc, setdesc] = useState('');
-  
-  
-  
+  const [name, setname] = useState("");
+  const [email, setemail] = useState("");
+  const [phone, setphone] = useState("");
+  const [desc, setdesc] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name,email,phone,desc);
-    const data = { name,email,phone,desc };
+    console.log(name, email, phone, desc);
+    const data = { name, email, phone, desc };
 
-    fetch('http://localhost:3000/api/postcontact/', {
-      method: 'POST',  //or PUT
+    fetch("http://localhost:3000/api/postcontact/", {
+      method: "POST", //or PUT
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data)
-
+      body: JSON.stringify(data),
     })
-    .then(response => response.text())
-    .then(data => {
-      console.log('Succsess:', data);
-      alert("thanks for contacting us");
-      setname('')
-      setemail('')
-      setphone('')
-      setdesc('')
-      
-    })
-    .catch((error) => {
-      console.error('Error: ', error);
-      
-    })
-
+      .then((response) => response.text())
+      .then((data) => {
+        console.log("Succsess:", data);
+        alert("thanks for contacting us");
+        setname("");
+        setemail("");
+        setphone("");
+        setdesc("");
+      })
+      .catch((error) => {
+        console.error("Error: ", error);
+      });
   };
   const handleChange = (e) => {
     // console.log(e, "change");
-    if(e.target.name == "name")
-    {
-         setname(e.target.value)
+    if (e.target.name == "name") {
+      setname(e.target.value);
+    } else if (e.target.name == "email") {
+      setemail(e.target.value);
+    } else if (e.target.name == "phone") {
+      setphone(e.target.value);
+    } else if (e.target.name == "desc") {
+      setdesc(e.target.value);
     }
-    else if(e.target.name == "email")
-    {
-         setemail(e.target.value)
-    }
-    else if(e.target.name == "phone")
-    {
-         setphone(e.target.value)
-    }
-    else if(e.target.name == "desc")
-    {
-         setdesc(e.target.value)
-    }
-    
   };
-  
 
   return (
     <div className={styles.container}>
@@ -78,7 +61,6 @@ const Contact = (props) => {
             name="name"
             value={name}
             onChange={handleChange}
-            
           />
         </div>
         <div className={styles.mb3}>
@@ -105,7 +87,6 @@ const Contact = (props) => {
             onChange={handleChange}
             className={styles.input}
             id="phone"
-           
           />
         </div>
         <div className={styles.mb3}>
@@ -119,7 +100,6 @@ const Contact = (props) => {
             onChange={handleChange}
             id="desc"
             rows="5"
-            
           ></textarea>
         </div>
         <button type="submit" className="btn btn-primary">

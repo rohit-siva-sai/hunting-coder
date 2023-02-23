@@ -1,6 +1,10 @@
 import * as fs from 'fs';
 
 export default async function handler(req, res) {
+  // console.log(req,"rohit")
+  // console.log(res,"siva sai");
+  
+  
   // console.log(res);
   if (req.method === "POST") {
       let data = await fs.promises.readdir('contactdata');

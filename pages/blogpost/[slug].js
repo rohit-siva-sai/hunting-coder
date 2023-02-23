@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import styles from "../../styles/BlogPost.module.css";
 import * as fs from "fs";
 
@@ -10,19 +10,19 @@ const Slug = (props) => {
 
   const [blog, setBlog] = useState(props.myBlog);
 
-  // const router = useRouter();
-  // useEffect(() => {
-  //   if (!router.isReady) return;
-  //   const { slug } = router.query;
-  //   // console.log("use effect is running");
-  //   fetch(`http://localhost:3000/api/getblog?slug=${slug}`)
-  //     .then((a) => {
-  //       return a.json();
-  //     })
-  //     .then((parsed) => {
-  //       setBlog(parsed);
-  //     });
-  // }, [router.isReady]);
+  const router = useRouter();
+  useEffect(() => {
+    if (!router.isReady) return;
+    const { slug } = router.query;
+    console.log("use effect is running");
+    fetch(`http://localhost:3000/api/getblog?slug=${slug}`)
+      .then((a) => {
+        return a.json();
+      })
+      .then((parsed) => {
+        setBlog(parsed);
+      });
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -57,11 +57,11 @@ export async function getStaticPaths() {
       // { params: { slug: "learn-nextwdhgv"} },
       // { params: { slug: "learn-nextwhgdv"} },
       { params: { slug: "learn-next"} },
-      // { params: { slug: "learn-reacthdcxhg"} },
-      // { params: { slug: "learn-reacthgwvxh"} },
-      // { params: { slug: "learn-reacthgwvshg"} },
-      // { params: { slug: "learn-reactwegvjkw"} },
-      // { params: { slug: "learn-reactwhgevhgw"} },
+      { params: { slug: "learn-reacthdcxhg"} },
+      { params: { slug: "learn-reacthgwvxh"} },
+      { params: { slug: "learn-reacthgwvshg"} },
+      { params: { slug: "learn-reactwegvjkw"} },
+      { params: { slug: "learn-reactwhgevhgw"} },
       { params: { slug: "learn-react"} },
      
   ],
@@ -74,7 +74,7 @@ export async function getStaticProps(context) {
 
   
   const { slug } = context.params;
-  console.log(slug);
+ 
   
    let myBlog =  await fs.promises.readFile(`blogdata/${slug}.json`, "utf-8");
   //  myBlog = (JSON.parse(myBlog));
