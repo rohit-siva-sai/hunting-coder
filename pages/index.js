@@ -37,7 +37,7 @@ export default function Home() {
         </h3>
 
         <p className={styles.description}>
-          A blog for hunting coder by a hunting coder
+          A blog to hunt the code
         </p>
         {/* <Image className={styles.myimg} src="/coder.avif" width={235} height={158}/> */}
         <Image className={styles.myimg} src="/coder.avif" alt="Hunting-Coder" width={235} height={158}  />
